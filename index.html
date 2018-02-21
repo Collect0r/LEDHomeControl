@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="utf-8" />
+   <title>LED Control</title>
+   <script src="http://code.jquery.com/jquery-latest.js"></script> 
+   <script src="home-api.js"></script>
+ </head>
+
+ <body style="text-align:center;">
+	<script src="jscolor.js"></script>
+	<script src="colorRect.js"></script>
+	
+	<table>
+	<tr>
+	 <td></td><td></td>
+	</tr>
+	</table>
+
+	Color: <input id="colLeft" class="jscolor {onFineChange:'setColor(this)'}" value="ab2567">
+	Color: <input id="colRight" class="jscolor {onFineChange:'setColor(this)'}" value="ab2567">
+
+        Color: <input id="colLeft" class="jscolor {onFineChange:'setColor(this)'}" value="ab2567">
+        Color: <input id="colRight" class="jscolor {onFineChange:'setColor(this)'}" value="ab2567">
+
+	<div id="test"></div>
+
+	<canvas id="canvas" width=300 height=300></canvas>
+
+	<script>
+	var canvas = document.getElementById("canvas");
+	var ctx = canvas.getContext("2d");
+
+	canvas.addEventListener('click', (e) => {
+		var canvRect = canvas.getBoundingClientRect();
+		var leftDist = e.clientX - canvRect.left;
+		var rightDist = canvRect.right - e.clientX;
+		if (leftDist < rightDist) {
+			document.getElementById("colLeft").jscolor.show();
+	                document.getElementById("colLeft").value = "asdasd";
+		} else {
+                        document.getElementById("colRight").jscolor.show();
+	                document.getElementById("colRight").value = "asdasd";
+		}
+	});
+
+	ctx.lineWidth = 20;
+	ctx.rainbowRect(100, 100, 100, 100, "white", "rgb(255, 255, 0)", "blue", "green", "purple");
+
+	var url = document.URL + 'led/';
+    	var jqxhr = $.getJSON(url, function(data) {
+      		document.getElementById("test").textContent = data['R1'];
+    	});
+	</script>
+
+	<script>
+	function setColor(picker) {
+	var colorStr = "rgb(" + Math.round(picker.rgb[0]) + ", " + Math.round(picker.rgb[1]) + ", "+ Math.round(picker.rgb[2]) + ")";
+	document.getElementById("canvas").getContext("2d").rainbowRect(100, 100, 100, 100, "white", colorStr, "white", "white", "white");
+	document.body.style.backgroundColor = '#' + picker.toString()
+	}
+	</script>
+
+	<script>
+	function
+	</script>
+ </body>
+</html>
