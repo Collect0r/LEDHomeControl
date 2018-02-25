@@ -40,10 +40,10 @@ function init() {
         btnBot.style.background = colStrBot;
         btnLeft.style.background = colStrLeft;
 
-        btnTop.style.boxShadow = "0px 0px 30px 3px " + colStrTop;
-        btnRight.style.boxShadow = "0px 0px 30px 3px " + colStrRight;
-        btnBot.style.boxShadow = "0px 0px 30px 3px " + colStrBot;
-        btnLeft.style.boxShadow = "0px 0px 30px 3px " + colStrLeft;
+        btnTop.style.boxShadow = "0px 0px 25px 5px " + colStrTop;
+        btnRight.style.boxShadow = "0px 0px 25px 5px " + colStrRight;
+        btnBot.style.boxShadow = "0px 0px 25px 5px " + colStrBot;
+        btnLeft.style.boxShadow = "0px 0px 25px 5px " + colStrLeft;
 
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
@@ -82,10 +82,10 @@ function setColorAndPost() {
     var colStrBot = "rgb(" + r3 + ", " + g3 + ", " + b3 + ")";
     var colStrLeft = "rgb(" + r4 + ", " + g4 + ", " + b4 + ")";
 
-    btnTop.style.boxShadow = "0px 0px 30px 3px " + colStrTop;
-    btnRight.style.boxShadow = "0px 0px 30px 3px " + colStrRight;
-    btnBot.style.boxShadow = "0px 0px 30px 3px " + colStrBot;
-    btnLeft.style.boxShadow = "0px 0px 30px 3px " + colStrLeft;
+    btnTop.style.boxShadow = "0px 0px 25px 5px " + colStrTop;
+    btnRight.style.boxShadow = "0px 0px 25px 5px " + colStrRight;
+    btnBot.style.boxShadow = "0px 0px 25px 5px " + colStrBot;
+    btnLeft.style.boxShadow = "0px 0px 25px 5px " + colStrLeft;
 
     document.getElementById("canvas").getContext("2d").rainbowRect(25, 25, 200, 200, "white", colStrTop, colStrRight, colStrBot, colStrLeft);
 
