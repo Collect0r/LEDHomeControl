@@ -7,12 +7,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var led = [{
-    R1: 255, G1: 0, B1: 0,
-    R2: 0, G2: 200, B2: 0,
-    R3: 0, G3: 0, B3: 255,
-    R4: 0, G4: 0, B4: 255 },
-    { mode: 1, rotate: 0, params: 0 },
-    { loop: 50, request: 4 }];
+    R1: '255', G1: '0', B1: '0',
+    R2: '0', G2: '200', B2: '0',
+    R3: '0', G3: '0', B3: '255',
+    R4: '0', G4: '0', B4: '255'},
+    { mode: '3', fSteps: '10', uSteps: '10', loopms: '80' }]; // fSteps and uSteps are multiple of loopms
 
 app.use(express['static'](__dirname));
 
@@ -24,19 +23,15 @@ app.get('/led', function (req, res) {
 
 app.post('/color', function (req, res) {
     led[0] = req.body;
+    console.log(led[0]);
     res.send(led[0]);
 });
 
-app.post('/mode', function (req, res) {
+app.post('/settings', function (req, res) {
     led[1] = req.body;
+    console.log(led[1]);
     res.send(led[1]);
 });
-
-app.post('/settings', function (req, res) {
-    led[2] = req.body;
-    res.send(led[2]);
-});
-
 
 
 // Express route for any other unrecognised incoming requests
