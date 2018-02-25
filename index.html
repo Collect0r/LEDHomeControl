@@ -102,10 +102,15 @@
             var jqxhr = $.getJSON(url, function (data) {
                 document.getElementById("test").textContent = data['R1'];
 
-                var colPickerTop = document.getElementById("colTop").jscolor;
-                var colPickerRight = document.getElementById("colRight").jscolor;
-                var colPickerBot = document.getElementById("colBot").jscolor;
-                var colPickerLeft = document.getElementById("colLeft").jscolor;
+                var btnTop = document.getElementById("colTop");
+                var btnRight = document.getElementById("colRight");
+                var btnBot = document.getElementById("colBot");
+                var btnLeft = document.getElementById("colLeft");
+
+                var colPickerTop = btnTop.jscolor;
+                var colPickerRight = btnRight.jscolor;
+                var colPickerBot = btnBot.jscolor;
+                var colPickerLeft = btnLeft.jscolor;
 
                 colPickerTop.rgb[0] = data[0]['R1'];
                 colPickerTop.rgb[1] = data[0]['G1'];
