@@ -124,16 +124,16 @@
                 colPickerLeft.rgb[2] = data[0]['B4'];
 
 
-                var colStrLeft = "rgb(" + Math.round(colPickerLeft.rgb[0]) + ", " + Math.round(colPickerLeft.rg$
-                var colStrRight = "rgb(" + Math.round(colPickerRight.rgb[0]) + ", " + Math.round(colPickerRight$
-                var colStrTop = "rgb(" + Math.round(colPickerTop.rgb[0]) + ", " + Math.round(colPickerTop.rgb[1$
-                var colStrBot = "rgb(" + Math.round(colPickerBot.rgb[0]) + ", " + Math.round(colPickerBot.rgb[1$
+                var colStrTop = "rgb(" + Math.round(colPickerTop.rgb[0]) + ", " + Math.round(colPickerTop.rgb[1]) + ", " + Math.round(colPickerTop.rgb[2]) + ")";
+                var colStrRight = "rgb(" + Math.round(colPickerRight.rgb[0]) + ", " + Math.round(colPickerRight.rgb[1]) + ", " + Math.round(colPickerRight.rgb[2]) + ")";
+                var colStrBot = "rgb(" + Math.round(colPickerBot.rgb[0]) + ", " + Math.round(colPickerBot.rgb[1]) + ", " + Math.round(colPickerBot.rgb[2]) + ")";
+                var colStrLeft = "rgb(" + Math.round(colPickerLeft.rgb[0]) + ", " + Math.round(colPickerLeft.rgb[1]) + ", " + Math.round(colPickerLeft.rgb[2]) + ")";
 
 
-                btnLeft.style.background = colStrLeft;
-                btnRight.style.background = colStrRight;
                 btnTop.style.background = colStrTop;
+                btnRight.style.background = colStrRight;
                 btnBot.style.background = colStrBot;
+                btnLeft.style.background = colStrLeft;
 
 		
 	        var canvas = document.getElementById("canvas");
