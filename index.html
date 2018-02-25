@@ -98,7 +98,7 @@
 
     <script>
         function requestPickerColor() {
-            var url = 'http://raspi:3000/led/';
+            var url = document.URL + 'led/';
             var jqxhr = $.getJSON(url, function (data) {
                 document.getElementById("test").textContent = data['R1'];
 
@@ -107,21 +107,40 @@
                 var colPickerBot = document.getElementById("colBot").jscolor;
                 var colPickerLeft = document.getElementById("colLeft").jscolor;
 
-                colPickerTop.rgb[0] = data['R1'];
-                colPickerTop.rgb[1] = data['G1'];
-                colPickerTop.rgb[2] = data['B1'];
+                colPickerTop.rgb[0] = data[0]['R1'];
+                colPickerTop.rgb[1] = data[0]['G1'];
+                colPickerTop.rgb[2] = data[0]['B1'];
 
-                colPickerRight.rgb[0] = data['R2'];
-                colPickerRight.rgb[1] = data['G2'];
-                colPickerRight.rgb[2] = data['B2'];
+                colPickerRight.rgb[0] = data[0]['R2'];
+                colPickerRight.rgb[1] = data[0]['G2'];
+                colPickerRight.rgb[2] = data[0]['B2'];
 
-                colPickerBot.rgb[0] = data['R3'];
-                colPickerBot.rgb[1] = data['G3'];
-                colPickerBot.rgb[2] = data['B3'];
+                colPickerBot.rgb[0] = data[0]['R3'];
+                colPickerBot.rgb[1] = data[0]['G3'];
+                colPickerBot.rgb[2] = data[0]['B3'];
 
-                colPickerLeft.rgb[0] = data['R4'];
-                colPickerLeft.rgb[1] = data['G4'];
-                colPickerLeft.rgb[2] = data['B4'];
+                colPickerLeft.rgb[0] = data[0]['R4'];
+                colPickerLeft.rgb[1] = data[0]['G4'];
+                colPickerLeft.rgb[2] = data[0]['B4'];
+
+
+                var colStrLeft = "rgb(" + Math.round(colPickerLeft.rgb[0]) + ", " + Math.round(colPickerLeft.rg$
+                var colStrRight = "rgb(" + Math.round(colPickerRight.rgb[0]) + ", " + Math.round(colPickerRight$
+                var colStrTop = "rgb(" + Math.round(colPickerTop.rgb[0]) + ", " + Math.round(colPickerTop.rgb[1$
+                var colStrBot = "rgb(" + Math.round(colPickerBot.rgb[0]) + ", " + Math.round(colPickerBot.rgb[1$
+
+
+                btnLeft.style.background = colStrLeft;
+                btnRight.style.background = colStrRight;
+                btnTop.style.background = colStrTop;
+                btnBot.style.background = colStrBot;
+
+		
+	        var canvas = document.getElementById("canvas");
+                var ctx = canvas.getContext("2d");
+                ctx.lineWidth = 50;
+                ctx.rainbowRect(25, 25, 200, 200, "white", colStrTop, colStrRight, colStrBot, colStrLeft);
+                canvas.addEventListener('click', openColorPicker);
             });
         }
     </script>
@@ -151,7 +170,7 @@
             }
             formBody = formBody.join("&");
 
-            fetch('http://raspi:3000/color/', {
+            fetch(document.URL + 'color/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
@@ -163,28 +182,8 @@
 
     <script>
         function init() {
-            //requestPickerColor();
+            requestPickerColor();
             setColorAndPost();
-
-            var btnLeft = document.getElementById("colLeft");
-            var btnRight = document.getElementById("colRight");
-            var btnTop = document.getElementById("colTop");
-            var btnBot = document.getElementById("colBot");
-
-            var colPickerLeft = btnLeft.jscolor;
-            var colPickerRight = btnRight.jscolor;
-            var colPickerTop = btnTop.jscolor;
-            var colPickerBot = btnBot.jscolor;
-
-            var colStrLeft = "rgb(" + Math.round(colPickerLeft.rgb[0]) + ", " + Math.round(colPickerLeft.rgb[1]) + ", " + Math.round(colPickerLeft.rgb[2]) + ")";
-            var colStrRight = "rgb(" + Math.round(colPickerRight.rgb[0]) + ", " + Math.round(colPickerRight.rgb[1]) + ", " + Math.round(colPickerRight.rgb[2]) + ")";
-            var colStrTop = "rgb(" + Math.round(colPickerTop.rgb[0]) + ", " + Math.round(colPickerTop.rgb[1]) + ", " + Math.round(colPickerTop.rgb[2]) + ")";
-            var colStrBot = "rgb(" + Math.round(colPickerBot.rgb[0]) + ", " + Math.round(colPickerBot.rgb[1]) + ", " + Math.round(colPickerBot.rgb[2]) + ")";
-
-            btnLeft.style.background = colStrLeft;
-            btnRight.style.background = colStrRight;
-            btnTop.style.background = colStrTop;
-            btnBot.style.background = colStrBot;
         }
     </script>
 
@@ -192,13 +191,6 @@
 
 
     <script>
-        var canvas = document.getElementById("canvas");
-        var ctx = canvas.getContext("2d");
-
-        ctx.lineWidth = 50;
-        ctx.rainbowRect(25, 25, 200, 200, "white", "white", "white", "white", "white");
-        canvas.addEventListener('click', openColorPicker);
-
         window.onload = init;
     </script>
 </body>
