@@ -2,7 +2,6 @@
 function init() {
     var url = document.URL + 'led/';
     var jqxhr = $.getJSON(url, function (data) {
-        document.getElementById("test").textContent = data['R1'];
 
         var btnTop = document.getElementById("colTop");
         var btnRight = document.getElementById("colRight");
